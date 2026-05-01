@@ -1,0 +1,46 @@
+<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Head -->
+  <rect x="25" y="10" width="50" height="45" rx="5" fill="#FF6B6B"/>
+  
+  <!-- Eyes -->
+  <circle cx="35" cy="25" r="6" fill="#FFD93D"/>
+  <circle cx="65" cy="25" r="6" fill="#FFD93D"/>
+  <circle cx="35" cy="25" r="3" fill="#000000"/>
+  <circle cx="65" cy="25" r="3" fill="#000000"/>
+  
+  <!-- Mouth -->
+  <path d="M 40 40 Q 50 45 60 40" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Body -->
+  <rect x="30" y="55" width="40" height="35" rx="3" fill="#4ECDC4"/>
+  
+  <!-- Chest panel -->
+  <rect x="35" y="60" width="30" height="20" rx="2" fill="#45B7AA"/>
+  
+  <!-- Buttons on chest -->
+  <circle cx="42" cy="65" r="2" fill="#FFD93D"/>
+  <circle cx="50" cy="65" r="2" fill="#FFD93D"/>
+  <circle cx="58" cy="65" r="2" fill="#FFD93D"/>
+  <circle cx="42" cy="73" r="2" fill="#FF6B6B"/>
+  <circle cx="50" cy="73" r="2" fill="#FF6B6B"/>
+  <circle cx="58" cy="73" r="2" fill="#FF6B6B"/>
+  
+  <!-- Left Arm -->
+  <rect x="15" y="60" width="12" height="30" rx="6" fill="#95E1D3"/>
+  
+  <!-- Right Arm -->
+  <rect x="73" y="60" width="12" height="30" rx="6" fill="#95E1D3"/>
+  
+  <!-- Left Leg -->
+  <rect x="35" y="90" width="10" height="25" rx="5" fill="#38ADA9"/>
+  
+  <!-- Right Leg -->
+  <rect x="55" y="90" width="10" height="25" rx="5" fill="#38ADA9"/>
+  
+  <!-- Antenna -->
+  <line x1="50" y1="10" x2="50" y2="0" stroke="#FF6B6B" stroke-width="2"/>
+  <circle cx="50" cy="0" r="2" fill="#FFD93D"/>
+  
+  <!-- Shine effect for 3D look -->
+  <ellipse cx="45" cy="20" rx="8" ry="5" fill="#FFFFFF" opacity="0.3"/>
+</svg>

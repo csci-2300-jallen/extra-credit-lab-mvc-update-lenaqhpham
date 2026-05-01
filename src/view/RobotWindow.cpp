@@ -21,7 +21,7 @@ RobotWindow::RobotWindow() {
     QVBoxLayout* mainLayout = new QVBoxLayout(central);
 
     grid = new RobotGridWidget(this);
-    QLabel* hint = new QLabel("Use arrow keys to move the robot", this);
+    QLabel* hint = new QLabel("Use WASD keys to move the robot", this);
     hint->setAlignment(Qt::AlignCenter);
 
     QHBoxLayout* historyLayout = new QHBoxLayout();

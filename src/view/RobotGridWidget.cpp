@@ -6,7 +6,14 @@
 #include <QSizePolicy>
 
 RobotGridWidget::RobotGridWidget(QWidget* parent)
-    : QWidget(parent), robotIcon("assets/robot-icon.png") {
+    : QWidget(parent), robotIcon("assets/robot-icon.svg") {
+    if (robotIcon.isNull()) {
+        robotIcon.load("../assets/robot-icon.svg");
+    }
+    // Fallback to PNG if SVG not found
+    if (robotIcon.isNull()) {
+        robotIcon.load("assets/robot-icon.png");
+    }
     if (robotIcon.isNull()) {
         robotIcon.load("../assets/robot-icon.png");
     }
