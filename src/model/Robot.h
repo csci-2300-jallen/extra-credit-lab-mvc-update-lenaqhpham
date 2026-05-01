@@ -14,6 +14,8 @@ public:
     int getY() const;
     int getCurrentHistoryIndex() const;
     const std::vector<Point2D>& getHistory() const;
+    int getTotalDistanceMoved() const;
+    bool isUpgraded() const;
 
     void moveUp();
     void moveDown();
@@ -37,5 +39,6 @@ private:
     int x = 2;
     int y = 2;
     int currentHistoryIndex = 0;
+    int totalDistanceMoved = 0;
     std::vector<Point2D> history = {{2, 2}};
 };

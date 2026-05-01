@@ -95,6 +95,31 @@ void RobotController::loadHistory() {
 }
 
 bool RobotController::handleKeyPress(QKeyEvent* event) {
+    // W key for up
+    if (event->key() == Qt::Key_W) {
+        moveUp();
+        return true;
+    }
+
+    // S key for down
+    if (event->key() == Qt::Key_S) {
+        moveDown();
+        return true;
+    }
+
+    // A key for left
+    if (event->key() == Qt::Key_A) {
+        moveLeft();
+        return true;
+    }
+
+    // D key for right
+    if (event->key() == Qt::Key_D) {
+        moveRight();
+        return true;
+    }
+
+    // Support arrow keys as well for backwards compatibility
     if (event->key() == Qt::Key_Up) {
         moveUp();
         return true;
@@ -132,13 +157,17 @@ void RobotController::refreshView() {
     view->setRobotPosition(model->getX(), model->getY());
     view->setUndoEnabled(model->canUndo());
     view->setRedoEnabled(model->canRedo());
+    
+    QString upgradeStatus = model->isUpgraded() ? " [UPGRADED - 2x Speed!]" : "";
     view->setStatusText(
-        QString("%1: (%2, %3)    History: %4 of %5")
+        QString("%1: (%2, %3)    History: %4 of %5    Distance: %6%7")
             .arg(QString::fromStdString(model->getName()))
             .arg(model->getX())
             .arg(model->getY())
             .arg(model->getCurrentHistoryIndex() + 1)
             .arg(static_cast<int>(model->getHistory().size()))
+            .arg(model->getTotalDistanceMoved())
+            .arg(upgradeStatus)
     );
 }
 

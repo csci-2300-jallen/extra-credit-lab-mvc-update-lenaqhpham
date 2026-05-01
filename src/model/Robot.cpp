@@ -25,20 +25,32 @@ const std::vector<Point2D>& Robot::getHistory() const {
     return history;
 }
 
+int Robot::getTotalDistanceMoved() const {
+    return totalDistanceMoved;
+}
+
+bool Robot::isUpgraded() const {
+    return totalDistanceMoved >= 10;
+}
+
 void Robot::moveUp() {
-    moveTo(x, y - 1);
+    int distance = isUpgraded() ? 2 : 1;
+    moveTo(x, y - distance);
 }
 
 void Robot::moveDown() {
-    moveTo(x, y + 1);
+    int distance = isUpgraded() ? 2 : 1;
+    moveTo(x, y + distance);
 }
 
 void Robot::moveLeft() {
-    moveTo(x - 1, y);
+    int distance = isUpgraded() ? 2 : 1;
+    moveTo(x - distance, y);
 }
 
 void Robot::moveRight() {
-    moveTo(x + 1, y);
+    int distance = isUpgraded() ? 2 : 1;
+    moveTo(x + distance, y);
 }
 
 void Robot::undo() {
@@ -74,6 +86,7 @@ void Robot::saveToFile(const std::string& filePath) const {
 
     file << name_ << '\n';
     file << currentHistoryIndex << '\n';
+    file << totalDistanceMoved << '\n';
 
     for (const Point2D& point : history) {
         file << point.x << ' ' << point.y << '\n';
@@ -85,8 +98,10 @@ void Robot::loadFromFile(const std::string& filePath) {
 
     std::string loadedName;
     int loadedIndex = 0;
+    int loadedDistance = 0;
     std::getline(file, loadedName);
     file >> loadedIndex;
+    file >> loadedDistance;
 
     int pointX = 0;
     int pointY = 0;
@@ -101,6 +116,7 @@ void Robot::loadFromFile(const std::string& filePath) {
     name_ = loadedName;
     history = loadedHistory;
     currentHistoryIndex = loadedIndex;
+    totalDistanceMoved = loadedDistance;
 }
 
 void Robot::moveTo(int newX, int newY) {
@@ -111,6 +127,11 @@ void Robot::moveTo(int newX, int newY) {
     if (newX == x && newY == y) {
         return;
     }
+
+    // Calculate distance moved (Manhattan distance)
+    int dx = (newX > x) ? (newX - x) : (x - newX);
+    int dy = (newY > y) ? (newY - y) : (y - newY);
+    totalDistanceMoved += (dx + dy);
 
     x = newX;
     y = newY;
